@@ -1,27 +1,18 @@
-// Welcome Notification Logic
 function showToast(message) {
     const area = document.getElementById('notification-area');
     const toast = document.createElement('div');
     toast.className = 'toast glass';
     toast.innerHTML = `<span>👋</span> ${message}`;
     area.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.remove();
-    }, 4000);
+    setTimeout(() => { toast.remove(); }, 4000);
 }
 
 function showWelcomeMsg() {
     showToast("Welcome to Jerobie's Portfolio! Have fun!");
 }
 
-// Show notification automatically on load
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        showWelcomeMsg();
-    }, 1500);
-
-    // Reveal elements
+    setTimeout(() => { showWelcomeMsg(); }, 1500);
     document.querySelectorAll('.reveal').forEach((el, i) => {
         setTimeout(() => {
             el.style.opacity = "1";
@@ -30,7 +21,6 @@ window.addEventListener('load', () => {
     });
 });
 
-// Battery & Stats
 function updateBattery() {
     if ('getBattery' in navigator) {
         navigator.getBattery().then(bat => {
@@ -46,12 +36,10 @@ function updateBattery() {
 }
 updateBattery();
 
-// Theme Toggle with Animation
 function toggleTheme() {
     const body = document.body;
     const btn = document.getElementById('themeBtn');
     body.style.opacity = '0';
-    
     setTimeout(() => {
         if (body.getAttribute('data-theme') === 'light') {
             body.removeAttribute('data-theme');
@@ -66,25 +54,21 @@ function toggleTheme() {
     }, 300);
 }
 
-// Clock
 setInterval(() => {
     const el = document.getElementById('clock');
     if (el) el.innerText = new Date().toLocaleTimeString('en-US', { hour12: false, timeZone: 'Asia/Manila' });
 }, 1000);
 
-// QR Modal
 function showQR() {
     document.getElementById('qrModal').style.display = 'flex';
     document.getElementById('qrcode').innerHTML = "";
     new QRCode(document.getElementById("qrcode"), { text: window.location.href, width: 200, height: 200 });
 }
 
-// Menu / Redirect
 function toggleMenu() { document.getElementById('redirectModal').style.display = 'flex'; }
 function closeModal() { document.getElementById('redirectModal').style.display = 'none'; }
 function confirmRedirect() { window.open('https://blesa123-bot.onrender.com/', '_blank'); closeModal(); }
 
-// Music
 const track = document.getElementById('audio');
 function handleMusic() {
     const p = document.getElementById('pState');
@@ -92,7 +76,6 @@ function handleMusic() {
     else { track.pause(); p.innerText = '▶'; }
 }
 
-// Particles
 const container = document.getElementById('particles');
 for (let i = 0; i < 20; i++) {
     const p = document.createElement('div');
