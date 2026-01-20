@@ -1,74 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jerobie Lauglaug | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/25/25231.png">
-  <script src="script.js" defer></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerobie - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://media1.giphy.com/media/6wdZAQm2unplu/giphy.gif" type="image/gif">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-  <!-- Header / Banner -->
-  <header>
-    <img src="https://media.giphy.com/media/l0MYC0LajbaPoEADu/giphy.gif" alt="Anime Banner" class="banner">
-    <h1>Jerobie Lauglaug</h1>
-    <p class="moto">Tap to view my social media</p>
-    <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=61560890733272" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=61586487418436" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
-      <a href="https://github.com/deker123" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://blesa123-bot.onrender.com" target="_blank"><i class="fas fa-robot"></i></a>
+
+    <div id="notification-area" class="notification-container"></div>
+
+    <div class="bg-particles" id="particles"></div>
+
+    <div class="top-controls">
+        <button class="control-btn" onclick="showWelcomeMsg()">🔔</button>
+        <button class="control-btn" onclick="toggleTheme()" id="themeBtn">☀️</button>
+        <button class="control-btn" onclick="toggleMenu()">☰</button>
     </div>
-  </header>
 
-  <!-- About Me -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Professional AI & coding developer skilled in multiple languages including Node.js, JavaScript, Python, HTML, CSS. Passionate about creating AI projects, bots, and interactive tools.
-    </p>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-cards">
-      <div class="card">
-        <h3>Gemini AI</h3>
-        <p>Advanced AI Assistant built in Node.js with intelligent responses.</p>
-        <a href="#">View Project</a>
-      </div>
-      <div class="card">
-        <h3>WonderChat AI</h3>
-        <p>Interactive AI chat system powered by WonderChat API.</p>
-        <a href="#">View Project</a>
-      </div>
-      <div class="card">
-        <h3>Chessopath Bots</h3>
-        <p>Telegram / Messenger bots for chess automation & games.</p>
-        <a href="#">View Project</a>
-      </div>
-      <!-- Add more cards here -->
+    <div id="qrModal" class="modal" onclick="this.style.display='none'">
+        <div id="qrcode"></div>
+        <p style="color:white; font-weight:bold; margin-top:15px;">SCAN MY PORTFOLIO</p>
     </div>
-  </section>
 
-  <!-- Newsletter Section -->
-  <section id="newsletter">
-    <h2>Subscribe to Newsletter</h2>
-    <p>Get updates on new AI projects & bots.</p>
-    <form id="newsletter-form">
-      <input type="email" placeholder="Enter your email" required>
-      <button type="submit">Subscribe</button>
-    </form>
-    <p id="newsletter-message"></p>
-  </section>
+    <div id="redirectModal" class="modal">
+        <div class="modal-content glass">
+            <h3>Jerobie AI</h3>
+            <p>Create your AI here!</p>
+            <div class="modal-actions">
+                <button class="modal-btn" onclick="confirmRedirect()">Proceed</button>
+                <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
 
-  <!-- Footer -->
-  <footer>
-    <p id="time"></p>
-    <p>&copy; 2026 Jerobie Lauglaug</p>
-  </footer>
+    <div class="container glass">
+        <div class="profile-img-container reveal">
+            <div class="glow-ring"></div>
+            <div class="status-dot"></div>
+            <img src="https://media1.giphy.com/media/6wdZAQm2unplu/giphy.gif" class="profile-img" alt="Jerobie">
+        </div>
+
+        <div class="reveal"><div id="skillBadge" class="skill-badge">IT Student & Pro Dev</div></div>
+
+        <h1 class="name reveal">Jerobie <span class="verified-check">✓</span></h1>
+        
+        <div class="meta-info reveal">
+            <span>📍 Philippines</span>
+            <span>•</span>
+            <span>🎂 2000+</span>
+            <span>•</span>
+            <span id="batteryStatus">🔋 --%</span>
+        </div>
+
+        <div class="about-section reveal">
+            <p>
+                Jerobie is a dedicated IT student and a results-driven developer with a deep passion for <strong>Artificial Intelligence</strong> and <strong>Automation Systems</strong>. He specializes in architecting scalable chatbots, streamlining complex workflows, and maintaining high-efficiency codebases.
+            </p>
+            
+            <div class="likes-container">
+                <span class="like-tag">#AI_Architect</span>
+                <span class="like-tag">#Chatbot_Pro</span>
+                <span class="like-tag">#Automation</span>
+                <span class="like-tag">#UI_UX</span>
+            </div>
+            
+            <span class="quote">"하나님을 신뢰하라" 🌷</span>
+        </div>
+
+        <div class="links-stack">
+            <a href="https://www.facebook.com/profile.php?id=61560890733272" class="link-btn fb reveal" target="_blank">Connect Facebook</a>
+            <a href="https://www.tiktok.com/@tagaipon?_r=1&_t=ZS-93E1Hm6F3ot" class="link-btn tk reveal" target="_blank">Follow My TikTok</a>
+            <a href="https://m.me/61560890733272" class="link-btn reveal" style="background:#0084ff;">Direct Message</a>
+            <button class="link-btn qr-trigger reveal" onclick="showQR()">Get Digital QR Card</button>
+        </div>
+
+        <div class="stats-row reveal">
+            <div class="stat-box"><span class="val">6767</span><span class="lab">Origin</span></div>
+            <div class="stat-box"><span class="val">PH</span><span class="lab">Location</span></div>
+            <div class="stat-box"><span class="val">39M</span><span class="lab">Reach</span></div>
+        </div>
+
+        <div id="clock" class="reveal">00:00:00</div>
+
+        <div class="player-pill reveal" onclick="handleMusic()">
+            <span id="pState">▶</span> <span class="audio-text">SYSTEM AUDIO</span>
+        </div>
+
+        <div class="footer reveal rgb-text">© 2026 Developed By Jerobie laug laug</div>
+    </div>
+
+    <audio id="audio" loop><source src="https://files.catbox.moe/ohqbir.mp3" type="audio/mpeg"></audio>
+
+    <script src="script.js"></script>
 </body>
 </html>
