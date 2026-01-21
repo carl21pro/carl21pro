@@ -2,98 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jerobie - Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://i.ibb.co/XfXfXfX/royal-portrait.jpg" type="image/jpeg">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
     <div id="notification-area" class="notification-container"></div>
-
     <div class="bg-particles" id="particles"></div>
 
-    <div class="top-controls">
-        <button class="control-btn" onclick="showWelcomeMsg()">🔔</button>
-        <button class="control-btn" onclick="toggleTheme()" id="themeBtn">☀️</button>
-        <button class="control-btn" onclick="toggleMenu()">☰</button>
+    <div class="header-nav">
+        <button class="nav-icon" onclick="showWelcomeMsg()">🔔</button>
+        <button class="nav-icon" onclick="toggleTheme()" id="themeBtn">☀️</button>
+        <button class="nav-icon" onclick="toggleMenu()">☰</button>
     </div>
 
-    <div id="qrModal" class="modal" onclick="this.style.display='none'">
-        <div id="qrcode"></div>
-        <p style="color:white; font-weight:bold; margin-top:15px;">SCAN MY PORTFOLIO</p>
+    <div class="content-container">
+        <div class="profile-card glass">
+            <div class="profile-frame">
+                <div class="glow-border"></div>
+                <img src="https://media1.giphy.com/media/6wdZAQm2unplu/giphy.gif" class="avatar" alt="Jerobie">
+                <div class="online-indicator"></div>
+            </div>
+
+            <div class="dev-badge">IT STUDENT & PRO DEV</div>
+            <h1 class="main-name">Jerobie <span class="check-mark">✓</span></h1>
+            
+            <div class="meta-row">
+                <span>📍 Philippines</span> • <span>🎂 2000+</span> • <span id="batteryStatus">🔋 --%</span>
+            </div>
+
+            <div class="description-box">
+                <p>Jerobie is a dedicated IT student and a results-driven developer with a deep passion for <strong>Artificial Intelligence</strong> and <strong>Automation Systems</strong>.</p>
+                <p>He specializes in architecting scalable chatbots, streamlining complex workflows, and maintaining high-efficiency codebases.</p>
+                
+                <div class="skill-tags">
+                    <span>#AI_Architect</span>
+                    <span>#Chatbot_Pro</span>
+                    <span>#Automation</span>
+                    <span>#UI_UX</span>
+                </div>
+                <div class="korean-quote">"하나님을 신뢰하라" 🌷</div>
+            </div>
+
+            <div class="action-stack">
+                <a href="https://www.facebook.com/profile.php?id=61560890733272" class="action-btn fb-color" target="_blank">Connect Facebook</a>
+                <a href="https://www.tiktok.com/@tagaipon?_r=1&_t=ZS-93E1Hm6F3ot" class="action-btn tk-color" target="_blank">Follow My TikTok</a>
+                <a href="https://m.me/61560890733272" class="action-btn msg-color" target="_blank">Direct Message</a>
+                <button class="action-btn qr-color" onclick="showQR()">Get Digital QR Card</button>
+            </div>
+
+            <div class="stats-footer">
+                <div class="stat-item"><strong>6767</strong><span>ORIGIN</span></div>
+                <div class="stat-item"><strong>PH</strong><span>LOCATION</span></div>
+                <div class="stat-item"><strong>39M</strong><span>REACH</span></div>
+            </div>
+
+            <div id="digitalClock">00:00:00</div>
+
+            <button class="music-pill" onclick="handleMusic()">
+                <span id="pState">▶</span> SYSTEM AUDIO
+            </button>
+
+            <div class="rgb-signature">© 2026 Developed By Jerobie laug laug</div>
+        </div>
     </div>
 
-    <div id="redirectModal" class="modal">
-        <div class="modal-content glass">
+    <div id="aiModal" class="modal-bg" onclick="closeModal()">
+        <div class="modal-inner glass" onclick="event.stopPropagation()">
             <h3>Jerobie AI</h3>
-            <p>Create your AI here!</p>
-            <div class="modal-actions">
-                <button class="modal-btn" onclick="confirmRedirect()">Proceed</button>
-                <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+            <p>Ready to build? Click below to visit my AI platform!</p>
+            <div class="modal-footer">
+                <a href="https://blesa123-bot.onrender.com/" class="modal-confirm" target="_blank">Visit AI Website</a>
+                <button class="modal-cancel" onclick="closeModal()">Cancel</button>
             </div>
         </div>
     </div>
 
-    <div class="container glass">
-        <div class="profile-img-container reveal">
-            <div class="glow-ring"></div>
-            <div class="status-dot"></div>
-            <img src="https://i.ibb.co/XfXfXfX/royal-portrait.jpg" class="profile-img" alt="Jerobie">
+    <div id="qrModal" class="modal-bg" onclick="this.style.display='none'">
+        <div class="modal-inner glass">
+            <div id="qrcode"></div>
+            <p style="margin-top:15px; font-weight:bold;">SCAN MY PORTFOLIO</p>
         </div>
-
-        <div class="reveal"><div id="skillBadge" class="skill-badge">IT Student & Pro Dev</div></div>
-
-        <h1 class="name reveal">Jerobie <span class="verified-check">✓</span></h1>
-        
-        <div class="meta-info reveal">
-            <span>📍 Philippines</span>
-            <span>•</span>
-            <span>🎂 2000+</span>
-            <span>•</span>
-            <span id="batteryStatus">🔋 --%</span>
-        </div>
-
-        <div class="about-section reveal">
-            <p>
-                Jerobie is a dedicated IT student and a results-driven developer with a deep passion for <strong>Artificial Intelligence</strong> and <strong>Automation Systems</strong>. He specializes in architecting scalable chatbots, streamlining complex workflows, and maintaining high-efficiency codebases.
-            </p>
-            
-            <div class="likes-container">
-                <span class="like-tag">#AI_Architect</span>
-                <span class="like-tag">#Chatbot_Pro</span>
-                <span class="like-tag">#Automation</span>
-                <span class="like-tag">#UI_UX</span>
-            </div>
-            
-            <span class="quote">"하나님을 신뢰하라" 🌷</span>
-        </div>
-
-        <div class="links-stack">
-            <a href="https://www.facebook.com/profile.php?id=61560890733272" class="link-btn fb reveal" target="_blank">Connect Facebook</a>
-            <a href="https://www.tiktok.com/@tagaipon?_r=1&_t=ZS-93E1Hm6F3ot" class="link-btn tk reveal" target="_blank">Follow My TikTok</a>
-            <a href="https://m.me/61560890733272" class="link-btn reveal" style="background:#0084ff;">Direct Message</a>
-            <button class="link-btn qr-trigger reveal" onclick="showQR()">Get Digital QR Card</button>
-        </div>
-
-        <div class="stats-row reveal">
-            <div class="stat-box"><span class="val">6767</span><span class="lab">Origin</span></div>
-            <div class="stat-box"><span class="val">PH</span><span class="lab">Location</span></div>
-            <div class="stat-box"><span class="val">39M</span><span class="lab">Reach</span></div>
-        </div>
-
-        <div id="clock" class="reveal">00:00:00</div>
-
-        <div class="player-pill reveal" onclick="handleMusic()">
-            <span id="pState">▶</span> <span class="audio-text">SYSTEM AUDIO</span>
-        </div>
-
-        <div class="footer reveal rgb-text">© 2026 Developed By Jerobie laug laug</div>
     </div>
 
-    <audio id="audio" loop><source src="https://files.catbox.moe/ohqbir.mp3" type="audio/mpeg"></audio>
-
+    <audio id="bgAudio" loop><source src="https://files.catbox.moe/ohqbir.mp3" type="audio/mpeg"></audio>
     <script src="script.js"></script>
 </body>
 </html>
